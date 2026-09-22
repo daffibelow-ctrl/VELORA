@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard — VELORA</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="topbar"><a class="brand" href="/">VELORA</a><button id="logout" class="button ghost">Keluar</button></header>
+<main class="dashboard"><div class="card"><span class="eyebrow">DASHBOARD</span><h1 id="welcome">Toko</h1><div class="stats"><div><small>Saldo tersedia</small><strong id="available">Rp0</strong></div><div><small>Saldo tertunda</small><strong id="pending">Rp0</strong></div><div><small>Penjualan</small><strong id="sales">Rp0</strong></div></div></div>
+<div class="card"><h2>Produk</h2><form id="productForm"><input name="name" placeholder="Nama produk" required><input name="slug" placeholder="slug-produk" required><input name="price" type="number" min="0" placeholder="Harga" required><input name="stock" type="number" min="0" value="1"><select name="product_type"><option value="DIGITAL">Digital</option><option value="PHYSICAL">Fisik</option><option value="SERVICE">Jasa</option></select><button class="button">Tambah produk</button></form><div id="products"></div></div>
+</main><script src="app.js"></script></body></html>
