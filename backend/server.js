@@ -43,5 +43,9 @@ app.use((err,req,res,next)=>{
   res.status(500).json({error:"Internal server error"});
 });
 
-const port=process.env.PORT||3000;
-app.listen(port,()=>console.log(`VELORA running on http://localhost:${port}`));
+const port = process.env.PORT || 10000;
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`VELORA running on http://0.0.0.0:${port}`);
+});
+

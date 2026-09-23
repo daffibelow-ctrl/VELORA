@@ -41,6 +41,25 @@ router.post("/", requireAuth, validate(schema), async (req,res)=>{
   res.status(201).json(r.rows[0]);
 });
 
+router.patch("/:id/publish", requireAuth, async (req,res)=>{
+  const r = await query(
+    `UPDATE products p
+     SET status='ACTIVE', updated_at=now()
+     FROM stores s
+     WHERE p.id=$1
+       AND p.store_id=s.id
+       AND s.user_id=$2
+       AND p.status='DRAFT'
+     RETURNING p.*`,
+    [req.params.id,req.user.sub]
+  );
+
+  if(!r.rows.length) {
+    return res.status(404).json({error:"Draft product not found"});
+  }
+
+  res.json(r.rows[0]);
+});
 router.delete("/:id", requireAuth, async (req,res)=>{
   const r=await query(
     `UPDATE products p SET status='ARCHIVED',updated_at=now()
